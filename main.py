@@ -15,7 +15,7 @@ def main():
     df = load_price_data(
         ticker="BTC-USD",
         start_date="2024-01-01",
-        end_date="2025-01-01"
+        end_date="2026-01-01"
     )
 
     df = add_features(df)

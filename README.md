@@ -1,25 +1,100 @@
-## Project Overview
-This project evaluates whether a machine learning–driven trading strategy
-can generate risk-adjusted alpha in Bitcoin markets after transaction costs.
+📈 Bitcoin Trading Strategy with XGBoost
+Overview
 
-## Methodology
-- Daily BTC-USD price data
-- Technical & volatility feature engineering
-- Multi-class XGBoost classifier (buy / hold / sell)
-- Execution-aware backtesting with transaction costs
+This project builds a machine learning–driven trading strategy for Bitcoin (BTC-USD) using XGBoost.
+The goal is to predict short-term price direction and generate Buy / Hold / Sell signals, then evaluate the strategy through backtesting.
 
-## Results
-- Out-of-sample testing (2024–2025)
-- Modest positive returns after costs
-- Strategy underperformed buy-and-hold in some regimes,
-  highlighting market efficiency and regime dependence
+The model is trained on historical BTC price data and enhanced with technical indicators commonly used in quantitative trading.
 
-## Key Takeaways
-- ML signals in crypto are regime-sensitive
-- Transaction costs materially impact performance
-- Honest backtesting is critical to strategy evaluation
+🎯 Objectives
 
-## Future Improvements
-- Walk-forward retraining
-- Probability-weighted position sizing
-- Regime detection
+-Predict future Bitcoin price movement using supervised learning
+-Engineer meaningful technical features
+-Generate actionable Buy / Hold / Sell signals
+-Backtest the strategy and evaluate performance
+-Demonstrate end-to-end ML workflow for a finance + data science portfolio
+
+🧠 Model & Methodology
+
+-Model: XGBoost Regressor
+-Target: Forward returns
+-Asset: BTC-USD
+-Date Range: 2024-01-01 to 2026-01-01
+
+Feature Engineering
+The model uses a combination of price-based and momentum indicators:
+-Daily Returns
+-Rolling Volatility
+-Moving Averages (short & long windows)
+-RSI (Relative Strength Index)
+-MACD
+-Lagged returns
+-Volume-based features (if available)
+
+These features help the model capture:
+-Trend direction
+-Momentum shifts
+-Market volatility
+
+📊 Trading Signal Logic
+
+Model predictions are converted into trading signals:
+
+Prediction	                            Signal
+Positive return above threshold	        Buy
+Near zero	                            Hold
+Negative return below threshold	        Sell
+
+This transforms raw ML output into interpretable trading actions, bridging the gap between modeling and real-world decision-making.
+
+🔁 Backtesting Results
+
+Total Strategy Return: ~11%
+
+Period: Jan 2024 – Jan 2026
+
+Benchmark: Buy-and-Hold BTC-USD (for comparison)
+
+While returns are modest, the project emphasizes process, robustness, and explainability, not overfitting or unrealistic performance.
+
+🛠️ Tech Stack
+
+Python
+pandas, numpy
+scikit-learn
+xgboost
+yfinance
+matplotlib / seaborn
+
+📂 Project Structure
+├── data/
+│   └── btc_price_data.csv
+├── notebooks/
+│   └── btc_xgboost_strategy.ipynb
+├── src/
+│   ├── features.py
+│   ├── model.py
+│   └── backtest.py
+├── README.md
+└── requirements.txt
+
+🚀 Key Takeaways
+
+-Demonstrates ML applied to financial markets
+-Shows strong understanding of:
+    Feature engineering
+    Model training & evaluation
+    Trading signal generation
+    Backtesting logic
+-Designed for portfolio presentation, not hype
+
+⚠️ Disclaimer
+
+This project is for educational purposes only.
+It does not constitute financial advice or a recommendation to trade cryptocurrencies.
+
+👤 Author
+
+José Bolívar
+MS in Financial Technologies & Analytics
+Aspiring Data Scientist / Financial Analyst
